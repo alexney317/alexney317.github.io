@@ -184,7 +184,11 @@
           <input id="pat" type="password" placeholder="github_pat_…" autocomplete="off" />
           <button class="btn btn-ghost btn-sm" id="save-pat">Save</button>
         </div>
-        <p class="hint">Fine-grained PAT with <strong style="color:var(--text)">Contents: Read & Write</strong> on this repo. Stored in your browser only.</p>
+        <p class="hint">
+          Use a <strong style="color:var(--text)">classic token</strong> (not fine-grained):<br />
+          <a href="https://github.com/settings/tokens/new?scopes=repo&description=Feed+Admin" target="_blank" style="color:var(--accent)">github.com/settings/tokens/new</a>
+          — check the <strong style="color:var(--text)">repo</strong> scope. Stored in your browser only.
+        </p>
         <p class="token-saved" id="token-saved">Token saved locally.</p>
       </div>
 
@@ -271,13 +275,14 @@
         // 1. Read current file (need SHA + content)
         const getResp = await fetch(API, {
           headers: {
-            'Authorization': `Bearer ${pat}`,
+            'Authorization': `token ${pat}`,
             'Accept': 'application/vnd.github+json',
           },
         });
 
-        if (getResp.status === 401) throw new Error('Invalid token — check your GitHub PAT.');
-        if (!getResp.ok)           throw new Error(`Could not read feed.json (${getResp.status}).`);
+        if (getResp.status === 401) throw new Error('Invalid token — re-enter your GitHub token.');
+        if (getResp.status === 403) throw new Error('Token lacks repo access. Create a classic token at github.com/settings/tokens/new with the "repo" scope checked.');
+        if (!getResp.ok)           throw new Error(`GitHub error ${getResp.status} — check your token and try again.`);
 
         const file    = await getResp.json();
         const current = JSON.parse(atob(file.content.replace(/\s/g, '')));
@@ -303,7 +308,7 @@
         const putResp = await fetch(API, {
           method:  'PUT',
           headers: {
-            'Authorization': `Bearer ${pat}`,
+            'Authorization': `token ${pat}`,
             'Accept':        'application/vnd.github+json',
             'Content-Type':  'application/json',
           },
