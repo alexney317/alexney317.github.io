@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import feedData from '../data/feed.json';
+
+interface FeedEntry {
+  id: string;
+  date: string;
+  type: 'tweet' | 'text';
+  tweetUrl?: string;
+  caption?: string | null;
+}
+
+const entries = feedData as FeedEntry[];
+
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric',
+  });
+}
+---
+
+<BaseLayout title="Feed" description="AI content and links curated by Alex Ney.">
+  <Fragment slot="head">
+    <script async src="https://platform.twitter.com/widgets.js"></script>
+  </Fragment>
+
+  <div class="page-hero">
+    <p class="page-hero__label">Feed</p>
+    <h1 class="page-hero__title">Feed</h1>
+    <p class="page-hero__description">AI content and links worth sharing.</p>
+  </div>
+
+  {entries.length === 0 ? (
+    <div class="coming-soon">
+      <span class="coming-soon__icon">📡</span>
+      <p class="coming-soon__text">Nothing here yet</p>
+      <p>Check back soon for curated AI content.</p>
+    </div>
+  ) : (
+    <div class="feed-grid">
+      {entries.map((entry) => (
+        <div class="feed-entry">
+          {entry.type === 'tweet' && entry.tweetUrl && (
+            <blockquote
+              class="twitter-tweet"
+              data-theme="dark"
+              data-dnt="true"
+              data-cards="hidden"
+            >
+              <a href={entry.tweetUrl}>{entry.tweetUrl}</a>
+            </blockquote>
+          )}
+          {entry.caption && (
+            <p class="feed-entry__caption">{entry.caption}</p>
+          )}
+          <p class="feed-entry__date">{formatDate(entry.date)}</p>
+        </div>
+      ))}
+    </div>
+  )}
+</BaseLayout>
+
+<style>
+  .feed-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .feed-entry {
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .feed-entry__caption {
+    margin-top: 0.5rem;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  .feed-entry__date {
+    margin-top: 0.25rem;
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+</style>
