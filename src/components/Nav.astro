@@ -1,0 +1,38 @@
+---
+const navLinks = [
+  { href: '/',         label: 'Home' },
+  { href: '/resume',   label: 'Resume' },
+  { href: '/about',    label: 'About' },
+  { href: '/blog',     label: 'Blog' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/contact',  label: 'Contact' },
+] as const;
+
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
+---
+
+<nav class="nav" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">Alex Ney</a>
+      <ul class="nav__links" role="list">
+        {navLinks.map(({ href, label }) => (
+          <li>
+            <a
+              href={href}
+              class="nav__link"
+              aria-current={isActive(href) ? 'page' : undefined}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</nav>

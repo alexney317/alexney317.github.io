@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { resume } from '../data/resume';
+
+const { contact, summary, experience, education, skills } = resume;
+---
+
+<BaseLayout
+  title="Resume"
+  description={`Resume of ${contact.name} — ${contact.title}`}
+>
+  <article>
+    <!-- Header -->
+    <header class="resume-header">
+      <h1 class="resume-header__name">{contact.name}</h1>
+      <p class="resume-header__title">{contact.title}</p>
+      <div class="resume-contact">
+        {contact.email    && <a href={`mailto:${contact.email}`}>{contact.email}</a>}
+        {contact.phone    && <span>{contact.phone}</span>}
+        {contact.location && <span>{contact.location}</span>}
+        {contact.linkedin && <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>}
+        {contact.github   && <a href={contact.github}   target="_blank" rel="noopener noreferrer">GitHub</a>}
+      </div>
+    </header>
+
+    <!-- Summary -->
+    {summary && (
+      <section class="resume-section">
+        <h2 class="resume-section__title">Summary</h2>
+        <p>{summary}</p>
+      </section>
+    )}
+
+    <!-- Experience -->
+    {experience.length > 0 && (
+      <section class="resume-section">
+        <h2 class="resume-section__title">Experience</h2>
+        {experience.map((entry) => (
+          <div class="resume-entry">
+            <div>
+              <div class="resume-entry__title">{entry.title}</div>
+              <div class="resume-entry__subtitle">
+                {entry.company}{entry.location ? ` · ${entry.location}` : ''}
+              </div>
+            </div>
+            <div class="resume-entry__date">{entry.startDate} – {entry.endDate}</div>
+            {entry.bullets.length > 0 && (
+              <ul class="resume-entry__bullets">
+                {entry.bullets.map((bullet) => <li>{bullet}</li>)}
+              </ul>
+            )}
+          </div>
+        ))}
+      </section>
+    )}
+
+    <!-- Education -->
+    {education.length > 0 && (
+      <section class="resume-section">
+        <h2 class="resume-section__title">Education</h2>
+        {education.map((entry) => (
+          <div class="resume-entry">
+            <div>
+              <div class="resume-entry__title">{entry.degree}</div>
+              <div class="resume-entry__subtitle">{entry.institution}</div>
+              {entry.notes && <div class="resume-entry__subtitle">{entry.notes}</div>}
+            </div>
+            <div class="resume-entry__date">{entry.startDate} – {entry.endDate}</div>
+          </div>
+        ))}
+      </section>
+    )}
+
+    <!-- Skills -->
+    {skills.length > 0 && (
+      <section class="resume-section">
+        <h2 class="resume-section__title">Skills</h2>
+        <div class="resume-skills">
+          {skills.map((group) => (
+            <div class="resume-skill-row">
+              <span class="resume-skill-row__category">{group.category}</span>
+              <span class="resume-skill-row__items">{group.items.join(', ')}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

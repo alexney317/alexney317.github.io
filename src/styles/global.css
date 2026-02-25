@@ -1,0 +1,419 @@
+/* ========================================================
+   Reset & Base
+   ======================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  --font-size-xs:   0.75rem;
+  --font-size-sm:   0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg:   1.125rem;
+  --font-size-xl:   1.25rem;
+  --font-size-2xl:  1.5rem;
+  --font-size-3xl:  1.875rem;
+  --font-size-4xl:  2.25rem;
+
+  /* Colors */
+  --color-text:        #0f172a;
+  --color-text-muted:  #64748b;
+  --color-accent:      #2563eb;
+  --color-accent-dark: #1d4ed8;
+  --color-border:      #e2e8f0;
+  --color-bg:          #ffffff;
+  --color-bg-subtle:   #f8fafc;
+  --color-bg-hover:    #f1f5f9;
+
+  /* Layout */
+  --container-max: 840px;
+  --container-pad: clamp(1rem, 5vw, 2rem);
+
+  /* Misc */
+  --radius-sm:  4px;
+  --radius:     8px;
+  --radius-lg:  12px;
+  --shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow:     0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --transition: 150ms ease;
+}
+
+/* ========================================================
+   Base Styles
+   ======================================================== */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================================
+   Layout
+   ======================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+main {
+  flex: 1;
+  padding-block: 3rem;
+}
+
+/* ========================================================
+   Typography
+   ======================================================== */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--font-size-4xl); }
+h2 { font-size: var(--font-size-2xl); }
+h3 { font-size: var(--font-size-xl); }
+h4 { font-size: var(--font-size-lg); }
+
+p { margin-block: 0.75rem; }
+p:first-child { margin-top: 0; }
+p:last-child  { margin-bottom: 0; }
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover {
+  color: var(--color-accent-dark);
+  text-decoration: underline;
+}
+
+ul, ol {
+  padding-left: 1.25rem;
+}
+
+/* ========================================================
+   Navigation
+   ======================================================== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  gap: 1rem;
+}
+
+.nav__logo {
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+.nav__logo:hover {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.nav__links {
+  display: flex;
+  gap: 0.125rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.nav__link {
+  display: block;
+  padding: 0.375rem 0.625rem;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: color var(--transition), background-color var(--transition);
+}
+.nav__link:hover,
+.nav__link[aria-current='page'] {
+  color: var(--color-text);
+  background-color: var(--color-bg-hover);
+  text-decoration: none;
+}
+
+/* ========================================================
+   Footer
+   ======================================================== */
+.footer {
+  border-top: 1px solid var(--color-border);
+  padding-block: 1.5rem;
+  margin-top: auto;
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer__copy {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+.footer__copy a {
+  color: var(--color-text-muted);
+}
+.footer__copy a:hover {
+  color: var(--color-accent);
+}
+
+/* ========================================================
+   Buttons
+   ======================================================== */
+.btn {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background-color var(--transition), border-color var(--transition), color var(--transition);
+  cursor: pointer;
+  border: 1px solid transparent;
+  line-height: 1.5;
+}
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+.btn-primary:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+  color: #fff;
+  text-decoration: none;
+}
+.btn-secondary {
+  background: var(--color-bg-subtle);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+.btn-secondary:hover {
+  background: var(--color-bg-hover);
+  text-decoration: none;
+}
+.btn-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* ========================================================
+   Page Hero
+   ======================================================== */
+.page-hero {
+  margin-bottom: 3rem;
+}
+.page-hero__label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+.page-hero__title {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.page-hero__description {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  max-width: 520px;
+}
+
+/* ========================================================
+   Resume
+   ======================================================== */
+.resume-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.resume-header__name {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.25rem;
+}
+.resume-header__title {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+.resume-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+.resume-contact a {
+  color: var(--color-text-muted);
+}
+.resume-contact a:hover {
+  color: var(--color-accent);
+}
+
+.resume-section {
+  margin-bottom: 2.5rem;
+}
+.resume-section__title {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.resume-entry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.125rem 1rem;
+  margin-bottom: 1.5rem;
+}
+.resume-entry:last-child {
+  margin-bottom: 0;
+}
+.resume-entry__title {
+  font-weight: 600;
+  font-size: var(--font-size-base);
+}
+.resume-entry__subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+.resume-entry__date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  text-align: right;
+  grid-row: 1;
+}
+.resume-entry__bullets {
+  grid-column: 1 / -1;
+  margin-top: 0.625rem;
+  padding-left: 1.1rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  line-height: 1.55;
+}
+
+.resume-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.resume-skill-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  font-size: var(--font-size-sm);
+}
+.resume-skill-row__category {
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+.resume-skill-row__items {
+  color: var(--color-text);
+}
+
+/* ========================================================
+   Coming Soon Placeholder
+   ======================================================== */
+.coming-soon {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: var(--color-bg-subtle);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-muted);
+}
+.coming-soon__icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+.coming-soon__text {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+/* ========================================================
+   Utilities
+   ======================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ========================================================
+   Print
+   ======================================================== */
+@media print {
+  .nav, .footer { display: none !important; }
+  main { padding: 0; }
+  body { font-size: 11pt; line-height: 1.4; }
+  a { color: inherit; text-decoration: none; }
+  .resume-contact a::after { content: ' (' attr(href) ')'; font-size: 9pt; }
+}
