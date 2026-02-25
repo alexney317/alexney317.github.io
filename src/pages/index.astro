@@ -1,16 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { resume } from '../data/resume';
 ---
 
-<BaseLayout title="Home" description={resume.contact.title}>
+<BaseLayout title="Home" description="Alex Ney — Operating Partner & Advisor">
   <section style="padding-top: 4rem; padding-bottom: 4rem;">
     <p class="page-hero__label">Welcome</p>
-    <h1 class="page-hero__title">{resume.contact.name}</h1>
-    <p class="page-hero__description">{resume.contact.title}</p>
+    <h1 class="page-hero__title">Alex Ney</h1>
+    <p class="page-hero__description">Operating Partner & Advisor based in Miami, FL.</p>
     <div class="btn-group">
-      <a href="/resume" class="btn btn-primary">View Resume →</a>
-      <a href="/about" class="btn btn-secondary">About me</a>
+      <a href="/about" class="btn btn-primary">About me →</a>
+      <a href="/contact" class="btn btn-secondary">Get in touch</a>
     </div>
   </section>
 </BaseLayout>

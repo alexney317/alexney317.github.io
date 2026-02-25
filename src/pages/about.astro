@@ -2,16 +2,67 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="About" description="About Alex Ney.">
+<BaseLayout title="About" description="About Alex Ney — Operating Partner, Advisor, CPA.">
   <div class="page-hero">
     <p class="page-hero__label">About</p>
-    <h1 class="page-hero__title">About Me</h1>
-    <p class="page-hero__description">A bit about who I am and what I do.</p>
+    <h1 class="page-hero__title">Alex Ney</h1>
+    <p class="page-hero__description">Operating Partner & Advisor · CPA · Miami, FL</p>
   </div>
 
-  <div class="coming-soon">
-    <span class="coming-soon__icon">✍️</span>
-    <p class="coming-soon__text">Coming soon</p>
-    <p>This page is under construction. Check back soon.</p>
+  <div class="about-body">
+    <p>
+      Alex Ney is an operating executive, CPA, and trusted advisor to founders, PE-backed businesses,
+      and management teams navigating complex transformations. He brings a rare combination of
+      hands-on operational experience, deep financial expertise, and a builder's instinct for
+      what actually moves the needle.
+    </p>
+
+    <p>
+      He currently serves as <strong>Operating Partner at Aegeus Group</strong> — a Ten Oaks Group
+      portfolio company — where he leads strategy, operations, and value creation for a $100M+ revenue
+      Testing, Inspection, Certification & Compliance (TICC) business serving Oil & Gas asset owners.
+      Alongside that, he advises founders and business owners through <strong>Ney Advisors</strong>,
+      providing financial, transactional, and strategic counsel across diverse engagements.
+    </p>
+
+    <p>
+      Before moving into operating roles, Alex spent nearly a decade in advisory services. As
+      <strong>Associate Director at CrossCountry Consulting</strong>, he partnered with private equity
+      sponsors and executive teams on enterprise-wide finance transformations, M&A execution, ERP
+      implementations, and CFO office buildouts for middle-market and upper middle-market companies.
+    </p>
+
+    <p>
+      Prior to CrossCountry, Alex was at <strong>Berkeley Research Group</strong>, where he mastered
+      financial due diligence and quality of earnings across 100+ buy-side and sell-side transactions
+      spanning healthcare, technology, professional services, and manufacturing. His career began at
+      <strong>Ernst & Young</strong> in Chicago, in the Financial Services assurance practice.
+    </p>
+
+    <p>
+      Alex holds a <strong>B.S. in Finance and Accounting</strong> from the Kelley School of Business
+      at Indiana University and is a licensed <strong>CPA</strong>.
+    </p>
   </div>
 </BaseLayout>
+
+<style>
+  .about-body {
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .about-body p {
+    margin: 0;
+    font-size: var(--font-size-base);
+    line-height: 1.8;
+    color: var(--color-text-muted);
+  }
+
+  .about-body strong {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+</style>
