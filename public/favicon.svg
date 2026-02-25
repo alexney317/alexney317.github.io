@@ -3,9 +3,10 @@
   <text
     x="16" y="22"
     font-family="system-ui, -apple-system, sans-serif"
-    font-size="18"
+    font-size="13"
     font-weight="700"
     text-anchor="middle"
     fill="white"
-  >A</text>
+    letter-spacing="-0.5"
+  >AN</text>
 </svg>
