@@ -37,13 +37,21 @@ const { contact, summary, experience, education, skills } = resume;
         <h2 class="resume-section__title">Experience</h2>
         {experience.map((entry) => (
           <div class="resume-entry">
-            <div>
-              <div class="resume-entry__title">{entry.title}</div>
-              <div class="resume-entry__subtitle">
-                {entry.company}{entry.location ? ` · ${entry.location}` : ''}
-              </div>
+            <!-- Company row -->
+            <div class="resume-entry__company-row">
+              <strong class="resume-entry__company">{entry.company}</strong>
+              {entry.location && <span class="resume-entry__location">{entry.location}</span>}
             </div>
-            <div class="resume-entry__date">{entry.startDate} – {entry.endDate}</div>
+
+            <!-- Role rows (one per title) -->
+            {entry.roles.map((role) => (
+              <div class="resume-entry__role-row">
+                <em class="resume-entry__role-title">{role.title}</em>
+                <span class="resume-entry__date">{role.startDate}{role.startDate ? ' – ' : ''}{role.endDate}</span>
+              </div>
+            ))}
+
+            <!-- Bullets -->
             {entry.bullets.length > 0 && (
               <ul class="resume-entry__bullets">
                 {entry.bullets.map((bullet) => <li>{bullet}</li>)}
@@ -60,12 +68,16 @@ const { contact, summary, experience, education, skills } = resume;
         <h2 class="resume-section__title">Education</h2>
         {education.map((entry) => (
           <div class="resume-entry">
-            <div>
-              <div class="resume-entry__title">{entry.degree}</div>
-              <div class="resume-entry__subtitle">{entry.institution}</div>
-              {entry.notes && <div class="resume-entry__subtitle">{entry.notes}</div>}
+            <div class="resume-entry__company-row">
+              <strong class="resume-entry__company">{entry.institution}</strong>
             </div>
-            <div class="resume-entry__date">{entry.startDate} – {entry.endDate}</div>
+            <div class="resume-entry__role-row">
+              <em class="resume-entry__role-title">{entry.degree}</em>
+              <span class="resume-entry__date">{entry.endDate}</span>
+            </div>
+            {entry.notes && (
+              <div class="resume-entry__notes">{entry.notes}</div>
+            )}
           </div>
         ))}
       </section>

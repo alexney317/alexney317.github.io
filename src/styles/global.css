@@ -314,39 +314,59 @@ ul, ol {
 }
 
 .resume-entry {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0.125rem 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 .resume-entry:last-child {
   margin-bottom: 0;
 }
-.resume-entry__title {
-  font-weight: 600;
+
+.resume-entry__company-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.1rem;
+}
+.resume-entry__company {
+  font-weight: 700;
   font-size: var(--font-size-base);
 }
-.resume-entry__subtitle {
+.resume-entry__location {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
+}
+
+.resume-entry__role-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+.resume-entry__role-title {
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
 }
 .resume-entry__date {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
   white-space: nowrap;
-  text-align: right;
-  grid-row: 1;
+  flex-shrink: 0;
+}
+.resume-entry__notes {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: 0.125rem;
 }
 .resume-entry__bullets {
-  grid-column: 1 / -1;
   margin-top: 0.625rem;
   padding-left: 1.1rem;
   font-size: var(--font-size-sm);
   color: var(--color-text);
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  line-height: 1.55;
+  gap: 0.4rem;
+  line-height: 1.6;
 }
 
 .resume-skills {
