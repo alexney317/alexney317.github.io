@@ -59,6 +59,50 @@ function formatDate(iso: string) {
   )}
 </BaseLayout>
 
+<script is:inline>
+  // Wait for twttr to be ready, then observe each rendered tweet iframe.
+  // When ≥60% visible → send play; when scrolled away → send pause.
+  (function () {
+    function bindAutoplay() {
+      if (!window.twttr?.events) {
+        setTimeout(bindAutoplay, 150);
+        return;
+      }
+
+      const observers = new WeakMap();
+
+      twttr.events.bind('rendered', function (event) {
+        const iframe = event.target;
+        if (!iframe || observers.has(iframe)) return;
+
+        const io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              const method = entry.isIntersecting ? 'play' : 'pause';
+              try {
+                entry.target.contentWindow.postMessage(
+                  JSON.stringify({ method: method }),
+                  'https://platform.twitter.com'
+                );
+              } catch (_) {}
+            });
+          },
+          { threshold: 0.6 }
+        );
+
+        io.observe(iframe);
+        observers.set(iframe, io);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindAutoplay);
+    } else {
+      bindAutoplay();
+    }
+  })();
+</script>
+
 <style>
   .feed-grid {
     display: flex;
