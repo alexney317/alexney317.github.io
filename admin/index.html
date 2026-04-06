@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-2zp6q64z> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex, nofollow"><title>Feed Admin</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><style>[data-astro-cid-2zp6q64z],[data-astro-cid-2zp6q64z]:before,[data-astro-cid-2zp6q64z]:after{box-sizing:border-box;margin:0;padding:0}:root{--bg: #0d1117;--surface: #161b22;--border: #30363d;--text: #e6edf3;--muted: #8b949e;--accent: #58a6ff;--green: #3fb950;--red: #f85149;--radius: 8px;--font: "Inter", system-ui, sans-serif}body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:2rem 1rem 4rem}.card[data-astro-cid-2zp6q64z]{width:100%;max-width:480px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem}.card__title[data-astro-cid-2zp6q64z]{font-size:1.125rem;font-weight:600;margin-bottom:.25rem}.card__sub[data-astro-cid-2zp6q64z]{font-size:.8125rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.5}.field[data-astro-cid-2zp6q64z]{margin-bottom:1rem}label[data-astro-cid-2zp6q64z]{display:block;font-size:.8125rem;font-weight:500;color:var(--muted);margin-bottom:.375rem}input[data-astro-cid-2zp6q64z],textarea[data-astro-cid-2zp6q64z]{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:var(--font);font-size:.9375rem;padding:.625rem .875rem;outline:none;transition:border-color .12s ease;-webkit-appearance:none}input[data-astro-cid-2zp6q64z]:focus,textarea[data-astro-cid-2zp6q64z]:focus{border-color:var(--accent)}textarea[data-astro-cid-2zp6q64z]{resize:vertical;min-height:72px;line-height:1.5}.pat-row[data-astro-cid-2zp6q64z]{display:flex;gap:.5rem}.pat-row[data-astro-cid-2zp6q64z] input[data-astro-cid-2zp6q64z]{flex:1;font-family:monospace;font-size:.8125rem}.btn[data-astro-cid-2zp6q64z]{display:inline-flex;align-items:center;justify-content:center;padding:.625rem 1.25rem;font-size:.9375rem;font-weight:500;font-family:var(--font);border-radius:6px;border:none;cursor:pointer;transition:opacity .15s ease,transform .15s ease;width:100%;margin-top:.25rem}.btn[data-astro-cid-2zp6q64z]:active{transform:scale(.98)}.btn[data-astro-cid-2zp6q64z]:disabled{opacity:.5;cursor:not-allowed}.btn-primary[data-astro-cid-2zp6q64z]{background:linear-gradient(135deg,#388bfd,#58a6ff);color:#fff;box-shadow:0 0 16px #58a6ff40}.btn-sm[data-astro-cid-2zp6q64z]{width:auto;padding:.375rem .75rem;font-size:.8125rem}.btn-ghost[data-astro-cid-2zp6q64z]{background:transparent;color:var(--muted);border:1px solid var(--border)}.status[data-astro-cid-2zp6q64z]{margin-top:1rem;padding:.625rem .875rem;border-radius:6px;font-size:.875rem;display:none}.status[data-astro-cid-2zp6q64z].visible{display:block}.status--loading[data-astro-cid-2zp6q64z]{background:#58a6ff1a;color:var(--accent);border:1px solid rgba(88,166,255,.3)}.status--success[data-astro-cid-2zp6q64z]{background:#3fb9501a;color:var(--green);border:1px solid rgba(63,185,80,.3)}.status--error[data-astro-cid-2zp6q64z]{background:#f851491a;color:var(--red);border:1px solid rgba(248,81,73,.3)}.divider[data-astro-cid-2zp6q64z]{border:none;border-top:1px solid var(--border);margin:1.5rem 0}.hint[data-astro-cid-2zp6q64z]{font-size:.75rem;color:var(--muted);margin-top:.375rem;line-height:1.4}.token-saved[data-astro-cid-2zp6q64z]{font-size:.75rem;color:var(--green);margin-top:.375rem;display:none}
+</style></head> <body data-astro-cid-2zp6q64z> <div class="card" data-astro-cid-2zp6q64z> <p class="card__title" data-astro-cid-2zp6q64z>Feed Admin</p> <p class="card__sub" data-astro-cid-2zp6q64z>
+Post a tweet to your feed. The site rebuilds automatically (~2 min after saving).
+</p> <!-- GitHub Token --> <div class="field" data-astro-cid-2zp6q64z> <label for="pat" data-astro-cid-2zp6q64z>GitHub Token</label> <div class="pat-row" data-astro-cid-2zp6q64z> <input id="pat" type="password" placeholder="github_pat_…" autocomplete="off" data-astro-cid-2zp6q64z> <button class="btn btn-ghost btn-sm" id="save-pat" data-astro-cid-2zp6q64z>Save</button> </div> <p class="hint" data-astro-cid-2zp6q64z>
+Use a <strong style="color:var(--text)" data-astro-cid-2zp6q64z>classic token</strong> (not fine-grained):<br data-astro-cid-2zp6q64z> <a href="https://github.com/settings/tokens/new?scopes=repo&description=Feed+Admin" target="_blank" style="color:var(--accent)" data-astro-cid-2zp6q64z>github.com/settings/tokens/new</a>
+— check the <strong style="color:var(--text)" data-astro-cid-2zp6q64z>repo</strong> scope. Stored in your browser only.
+</p> <p class="token-saved" id="token-saved" data-astro-cid-2zp6q64z>Token saved locally.</p> </div> <hr class="divider" data-astro-cid-2zp6q64z> <!-- Tweet URL --> <div class="field" data-astro-cid-2zp6q64z> <label for="tweet-url" data-astro-cid-2zp6q64z>Tweet / Post URL</label> <input id="tweet-url" type="url" placeholder="https://x.com/user/status/…" autocomplete="off" inputmode="url" data-astro-cid-2zp6q64z> <p class="hint" data-astro-cid-2zp6q64z>On X: tap Share → Copy Link, then paste here.</p> </div> <!-- Caption (optional) --> <div class="field" data-astro-cid-2zp6q64z> <label for="caption" data-astro-cid-2zp6q64z>Caption <span style="font-weight:400;opacity:0.6" data-astro-cid-2zp6q64z>(optional)</span></label> <textarea id="caption" placeholder="Why this is worth sharing…" data-astro-cid-2zp6q64z></textarea> </div> <button class="btn btn-primary" id="submit" data-astro-cid-2zp6q64z>Add to Feed</button> <div class="status" id="status" data-astro-cid-2zp6q64z></div> </div> <script>
+      const REPO   = 'alexney317/alexney317.github.io';
+      const FILE   = 'src/data/feed.json';
+      const API    = `https://api.github.com/repos/${REPO}/contents/${FILE}`;
+
+      const patInput    = document.getElementById('pat');
+      const savePatBtn  = document.getElementById('save-pat');
+      const tokenSaved  = document.getElementById('token-saved');
+      const tweetInput  = document.getElementById('tweet-url');
+      const captionInput= document.getElementById('caption');
+      const submitBtn   = document.getElementById('submit');
+      const statusEl    = document.getElementById('status');
+
+      // Restore saved token
+      const saved = localStorage.getItem('gh_pat');
+      if (saved) {
+        patInput.value = saved;
+        tokenSaved.style.display = 'block';
+      }
+
+      savePatBtn.addEventListener('click', () => {
+        const val = patInput.value.trim();
+        if (!val) return;
+        localStorage.setItem('gh_pat', val);
+        tokenSaved.style.display = 'block';
+      });
+
+      submitBtn.addEventListener('click', async () => {
+        const pat      = patInput.value.trim() || localStorage.getItem('gh_pat') || '';
+        const tweetUrl = tweetInput.value.trim();
+        const caption  = captionInput.value.trim();
+
+        if (!pat)      { showStatus('Enter your GitHub token first.', 'error'); return; }
+        if (!tweetUrl) { showStatus('Paste a tweet URL first.', 'error'); return; }
+
+        submitBtn.disabled = true;
+        showStatus('Saving to feed…', 'loading');
+
+        try {
+          await postEntry(pat, tweetUrl, caption);
+          tweetInput.value = '';
+          captionInput.value = '';
+          showStatus('Done! Site will rebuild in ~2 minutes.', 'success');
+        } catch (err) {
+          showStatus(err.message, 'error');
+        } finally {
+          submitBtn.disabled = false;
+        }
+      });
+
+      async function postEntry(pat, rawUrl, caption) {
+        // Normalize x.com → twitter.com for embed compatibility
+        const tweetUrl = rawUrl.replace(/^https?:\/\/x\.com/, 'https://twitter.com');
+
+        // 1. Read current file (need SHA + content)
+        const getResp = await fetch(API, {
+          headers: {
+            'Authorization': `token ${pat}`,
+            'Accept': 'application/vnd.github+json',
+          },
+        });
+
+        if (getResp.status === 401) throw new Error('Invalid token — re-enter your GitHub token.');
+        if (getResp.status === 403) throw new Error('Token lacks repo access. Create a classic token at github.com/settings/tokens/new with the "repo" scope checked.');
+        if (!getResp.ok)           throw new Error(`GitHub error ${getResp.status} — check your token and try again.`);
+
+        const file    = await getResp.json();
+        const current = JSON.parse(atob(file.content.replace(/\s/g, '')));
+
+        // 2. Prepend new entry
+        const entry = {
+          id:       Date.now().toString(),
+          date:     new Date().toISOString(),
+          type:     'tweet',
+          tweetUrl: tweetUrl,
+          caption:  caption || null,
+        };
+
+        const updated = [entry, ...current];
+
+        // 3. Write back via GitHub API
+        const body = JSON.stringify({
+          message: `Add feed entry ${new Date().toLocaleDateString('en-US')}`,
+          content: btoa(unescape(encodeURIComponent(JSON.stringify(updated, null, 2)))),
+          sha:     file.sha,
+        });
+
+        const putResp = await fetch(API, {
+          method:  'PUT',
+          headers: {
+            'Authorization': `token ${pat}`,
+            'Accept':        'application/vnd.github+json',
+            'Content-Type':  'application/json',
+          },
+          body,
+        });
+
+        if (!putResp.ok) {
+          const err = await putResp.json().catch(() => ({}));
+          throw new Error(err.message || `GitHub API error (${putResp.status}).`);
+        }
+      }
+
+      function showStatus(msg, type) {
+        statusEl.textContent = msg;
+        statusEl.className   = `status visible status--${type}`;
+      }
+    </script> </body> </html>
